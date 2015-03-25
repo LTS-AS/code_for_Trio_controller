@@ -1,15 +1,37 @@
-DIM x AS INTEGER
+DIM i AS INTEGER
+i=0
+'IF (AXISSTATUS AND $08)>0 THEN
+'    PRINT "Remote drive error, trying to reset rive"
+'    PRINT HEX(DRIVE_STATUS)
+'ENDIF
+BASE(0)
+'Pulses per revolution
+UNITS=1048576
+'r/sek^2
+ACCEL=10
+'r/sek^2
+DECEL=10
+'r/sek
+SPEED = 1000/60
+P_GAIN=10
+I_GAIN=0.01
+D_GAIN=0
+DATUM_IN=-1
+'r
+FE_LIMIT=3
+DATUM(0)
+SERVO= ON
+WDOG =ON
+WA(100)
+loop:
+MOVE(5)
+WAIT IDLE
 
-FOR x=0 TO 0
-  BASE(x)
-  UNITS=1048576
-  ACCEL=1
-  DECEL=1
-  D_GAIN=0
-  DATUM_IN=-1
-  FE_LIMIT=0.1
-  PRINT "akse ", x, " er satt opp"
-NEXT x
-
-WDOG= ON
+MOVE(-5)
+WAIT IDLE
+'WA(100)
+i=i+1
+IF i<3 THEN
+    GOTO loop
+ENDIF
 
