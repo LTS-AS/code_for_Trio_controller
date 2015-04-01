@@ -1,0 +1,14 @@
+DIM i AS INTEGER
+i=0
+
+loop:
+MOVE(5)
+WAIT IDLE
+
+MOVE(-5)
+WAIT IDLE
+'WA(100)
+i=i+1
+IF i<3 THEN
+  GOTO loop
+ENDIF

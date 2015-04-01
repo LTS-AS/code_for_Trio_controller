@@ -1,0 +1,8 @@
+DIM ax_no AS INTEGER
+ax_no = 0
+
+BASE(ax_no)
+CANCEL
+WAIT IDLE
+SERVO = OFF
+WDOG = OFF

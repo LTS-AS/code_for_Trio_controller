@@ -1,16 +1,14 @@
-DIM i AS INTEGER
-i=0
-'IF (AXISSTATUS AND $08)>0 THEN
-'    PRINT "Remote drive error, trying to reset rive"
-'    PRINT HEX(DRIVE_STATUS)
-'ENDIF
+IF (AXISSTATUS AND $08)>0 THEN
+  PRINT "Remote drive error, trying to reset rive"
+  PRINT HEX(DRIVE_STATUS)
+ENDIF
 BASE(0)
 'Pulses per revolution
 UNITS=1048576
 'r/sek^2
-ACCEL=10
+ACCEL=50
 'r/sek^2
-DECEL=10
+DECEL=55
 'r/sek
 SPEED = 1000/60
 P_GAIN=10
@@ -23,15 +21,3 @@ DATUM(0)
 SERVO= ON
 WDOG =ON
 WA(100)
-loop:
-MOVE(5)
-WAIT IDLE
-
-MOVE(-5)
-WAIT IDLE
-'WA(100)
-i=i+1
-IF i<3 THEN
-    GOTO loop
-ENDIF
-
